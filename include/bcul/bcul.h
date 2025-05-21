@@ -15,7 +15,6 @@
 #include <optional>
 #include <iostream>
 
-// Include Windows API - internally used by the library
 #ifdef _WIN32
 #ifndef WIN32_LEAN_AND_MEAN
 #define WIN32_LEAN_AND_MEAN
@@ -23,7 +22,6 @@
 #include <windows.h>
 #endif
 
-// Internal BCUL library headers
 #include "console.h"
 #include "window_management.h"
 #include "main.h"

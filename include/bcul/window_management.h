@@ -44,7 +44,7 @@ namespace bcul::wman {
 		int fontSize;          ///< Font size in pixels
 	};
 
-	// Static variables
+	// static(public) variables
 	static constexpr const wchar_t* DEFAULT_WINDOW_CLASS = L"DefaultWindowClass";
 	static int openWindows = 0;
 	static std::vector<HWND> windowHandles;
@@ -54,7 +54,7 @@ namespace bcul::wman {
 	static HWND lastCreatedWindow = NULL;
 	static unsigned int buttonIdCounter = 0;
 
-	// Function declarations
+	// function declarations
 	void createWindow(const std::string& windowName, int width, int height);
 	void createButton(const std::string& text, int width, int height, std::function<void()> callback, int x, int y, int fontSize);
 	void createLabel(const std::string& text, int x, int y, int width, int height, bool isBold, bool isItalic, bool isUnderlined, int fontSize);

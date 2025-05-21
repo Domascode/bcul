@@ -37,7 +37,7 @@ namespace bcul::wman {
     void createWindow(const std::string& windowName, int width, int height) {
         HINSTANCE hInstance = GetModuleHandle(0);
         
-        // Only register the window class if it hasn't been registered yet
+        // only register the window class if it hasn't been registered yet
         if (!windowClassRegistered) {
             WNDCLASSW wc = {};
             wc.lpfnWndProc = WindowProc;
@@ -53,7 +53,7 @@ namespace bcul::wman {
             windowClassRegistered = true;
         }
         
-        // Create the window with a temporary title
+        // Create the window with a temporary title    ai coded this part idk what a lastCreatedWindow is either
         lastCreatedWindow = CreateWindowW(
             DEFAULT_WINDOW_CLASS,    // Class name
             L"",                     // Temporary empty title
