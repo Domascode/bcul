@@ -1,4 +1,0 @@
-C:/Users/Domas Se/Documents/C++ Projects/bcul/bcul/build/CMakeFiles/bcul_lib.dir
-C:/Users/Domas Se/Documents/C++ Projects/bcul/bcul/build/CMakeFiles/bcul.dir
-C:/Users/Domas Se/Documents/C++ Projects/bcul/bcul/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/Domas Se/Documents/C++ Projects/bcul/bcul/build/CMakeFiles/ZERO_CHECK.dir
