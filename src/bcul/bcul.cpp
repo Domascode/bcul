@@ -1,12 +1,8 @@
+// @brief conversion from string to wstring which is expected by win32
 #include "bcul.h"
 #include <windows.h>
 #include <string>
 
-/**
- * @brief Converts a string to a wide string for win32
- * @param str The string to convert
- * @return The converted wide string
- */
 std::wstring toWideString(const std::string& str) {
     if (str.empty()) return std::wstring();
     

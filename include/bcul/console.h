@@ -1,37 +1,22 @@
-/**
- * @file console.h
- * @brief Console management functionality
- * @details Provides functions for controlling and using the console window
- */
-
+// @brief console related functions
 #pragma once
 #include "bcul.h"
 #include <windows.h>
 #include <iostream>
 
-/**
- * @brief Namespace for console-related functionality
- * @details Manages the console window and output
- */
 namespace bcul::console {
-    static bool showConsole = true;  ///< Current visibility state of the console
+    static bool showConsole = true; // shows the console by defaults
 
-    /**
-     * @brief Sets the visibility of the console window
-     * @param visible Whether the console should be visible
-     */
     inline void setVisibility(bool visible) {
-        showConsole = visible;
-        if (!visible) {
-            FreeConsole();
+        visible = showConsole; // copy data from showConsole, no need for a pointer
+        if (!visible) { // if false
+            FreeConsole(); // hide the console
         }
     }
 
-    /**
-     * @brief Prints a message to the console
-     * @param message The message to print
-     */
+	/* removed useless function, just use std::cout
     inline void print(const std::string& message) {
-        std::cout << message << std::endl;
+        std::cout << message << std::endl;		
     }
+	*/
 } 

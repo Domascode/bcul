@@ -1,3 +1,5 @@
+// @brief header file for window_management.cpp
+// stores data and defines things
 #pragma once
 #include "bcul.h"
 #include <windows.h>
@@ -9,53 +11,73 @@
 
 namespace bcul::wman {
 	struct Button {
-		HWND handle;                    ///< Window handle for the button
-		std::string text;               ///< Text displayed on the button
-		int width;                      ///< Width of the button in pixels
-		int height;                     ///< Height of the button in pixels
-		int x;                          ///< X position of the button
-		int y;                          ///< Y position of the button
-		std::function<void()> callback; ///< Function to call when button is clicked
-		int fontSize;                   ///< Font size in pixels
+		HWND handle;                    // window handle for the button
+		std::string text;               // text displayed on the button
+		int width;                      // width of the button in pixels
+		int height;                     // height of the button in pixels
+		int x;                          // x position of the button
+		int y;                          // y position of the button
+		std::function<void()> callback; // function to call when button is clicked
+		int fontSize;                   // font size in pixels
+		HFONT hFont;
 	};
 
 	struct Label {
-		HWND handle;           ///< Window handle for the label
-		std::string text;      ///< Text displayed in the label
-		int x;                 ///< X position of the label
-		int y;                 ///< Y position of the label
-		int width;             ///< Width of the label in pixels
-		int height;            ///< Height of the label in pixels
-		bool isBold;           ///< Whether the text is bold
-		bool isItalic;         ///< Whether the text is italic
-		bool isUnderlined;     ///< Whether the text is underlined
-		int fontSize;          ///< Font size in pixels
+		HWND handle;           // window handle for the label
+		std::string text;      // text displayed in the label
+		int x;                 // x position of the label
+		int y;                 // y position of the label
+		int width;             // width of the label in pixels
+		int height;            // height of the label in pixels
+		bool isBold;           // whether the text is bold
+		bool isItalic;         // whether the text is italic
+		bool isUnderlined;     // whether the text is underlined
+		int fontSize;          // font size in pixels
+		HFONT hFont;
 	};
 
 	struct TextInput {
-		HWND handle;           ///< Window handle for the text input
-		std::string text;      ///< Current text in the input
-		int x;                 ///< X position of the input
-		int y;                 ///< Y position of the input
-		int width;             ///< Width of the input in pixels
-		int height;            ///< Height of the input in pixels
-		bool isPassword;       ///< Whether this is a password input
-		bool isMultiline;      ///< Whether this is a multiline input
-		int fontSize;          ///< Font size in pixels
+		HWND handle;           // window handle for the text input
+		std::string text;      // current text in the input
+		int x;                 // x position of the input
+		int y;                 // y position of the input
+		int width;             // width of the input in pixels
+		int height;            // height of the input in pixels
+		bool isPassword;       // whether this is a password input
+		bool isMultiline;      // whether this is a multiline input
+		int fontSize;          // font size in pixels
+		HFONT hFont;
 	};
 
 	// static(public) variables
-	static constexpr const wchar_t* DEFAULT_WINDOW_CLASS = L"DefaultWindowClass";
-	static int openWindows = 0;
-	static std::vector<HWND> windowHandles;
-	static std::map<HWND, Button> buttons;
-	static std::map<HWND, Label> labels;
-	static std::map<HWND, TextInput> textInputs;
-	static HWND lastCreatedWindow = NULL;
-	static unsigned int buttonIdCounter = 0;
+	
+	// default window class
+	extern const wchar_t* DEFAULT_WINDOW_CLASS;
+	
+	// open window counter
+	extern int openWindows;
+	
+	// stores every window handle in a public vector
+	extern std::vector<HWND> windowHandles;
+	
+	// maps each window handle to a button
+	extern std::map<HWND, Button> buttons;
+	
+	// maps each window handle to a label
+	extern std::map<HWND, Label> labels;
+	
+	// maps every window handle to a text input
+	extern std::map<HWND, TextInput> textInputs;
+	
+	// stores the handle of the newest window
+	extern HWND lastCreatedWindow;
+	
+	// stores the number of button id's
+	extern unsigned int buttonIdCounter;
 
 	// function declarations
-	void createWindow(const std::string& windowName, int width, int height);
+	void run();
+	void createWindow(const std::string& windowName, int width, int height, int x, int y);
 	void createButton(const std::string& text, int width, int height, std::function<void()> callback, int x, int y, int fontSize);
 	void createLabel(const std::string& text, int x, int y, int width, int height, bool isBold, bool isItalic, bool isUnderlined, int fontSize);
 	void createTextInput(const std::string& placeholder, int x, int y, int width, int height, bool isPassword, bool isMultiline, int fontSize);

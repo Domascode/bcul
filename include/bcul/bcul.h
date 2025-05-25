@@ -1,13 +1,6 @@
-/**
- * @file bcul.h
- * @brief Main header file for the BCUL library
- * @details Contains core functionality and namespace definitions.
- * This is the only header users need to include to use the full library.
- */
-
+// @brief home of the bcul namespace; declares every bcul function
 #pragma once
 
-// Standard library includes
 #include <string>
 #include <functional>
 #include <vector>
@@ -16,83 +9,73 @@
 #include <iostream>
 
 #ifdef _WIN32
-#ifndef WIN32_LEAN_AND_MEAN
+#ifndef WIN32_LEAN_AND_MEAN // excludes unnecessary api's, improves performance
 #define WIN32_LEAN_AND_MEAN
 #endif
 #include <windows.h>
 #endif
 
-#include "console.h"
-#include "window_management.h"
-#include "main.h"
+#include "console.h"			//
+#include "window_management.h"  // includes every other .h file
 
-/**
- * @brief Main namespace for the BCUL library
- * @details Contains all components of the BCUL library
- */
 namespace bcul {
-    /**
-     * @brief Console management namespace
-     * @details Handles console window visibility and output
-     */
+	
+	namespace metrics {
+		inline int centerX(int width) {
+			return (GetSystemMetrics(SM_CXSCREEN) - width) / 2;
+		}
+
+		inline int centerY(int height) {
+			return (GetSystemMetrics(SM_CYSCREEN) - height) / 2;
+		}
+	}
+	
     namespace console {
-        void setVisibility(bool visible);
-        void print(const std::string& message);
+        void setVisibility(bool visible); // sets console visibility (window/background)
+        //void print(const std::string& message); 	removed useless function, just use std::cout
     }
 
-    /**
-     * @brief Window management namespace
-     * @details Handles window creation and control
-     */
     namespace wman {
         void createWindow(
-            const std::string& windowName, 
-            int width, int height
+            const std::string& windowName, // sets the window title; bugged to only show the first char of the string
+            int width, int height, // window size
+			int x, int y // spawn position
             );
 
         void createButton(
-            const std::string& text,
-            int width, int height, 
-            std::function<void()> callback, 
-            int x, int y, 
-            int fontSize = 14
+            const std::string& text, // sets the text on the button
+            int width, int height, // button size
+            std::function<void()> callback, // function to call on press
+            int x, int y, // spawn position
+            int fontSize = 14 // sets the font size
             );
 
         void createLabel(
-            const std::string& text, 
-            int x, int y,
-            int width, int height, 
-            bool isBold = false, 
-            bool isItalic = false, 
-            bool isUnderlined = false, 
-            int fontSize = 14
+            const std::string& text, // text to display
+            int x, int y, // spawn position
+            int width, int height, // label size
+            bool isBold = false, // is bold
+            bool isItalic = false, // is italic
+            bool isUnderlined = false, // is underlined
+            int fontSize = 14 // sets the font size
             );
 
         void createTextInput(
-            const std::string& placeholder, 
-            int x, int y, 
-            int width, int height, 
-            bool isPassword = false, 
-            bool isMultiline = false, 
-            int fontSize = 14
+            const std::string& placeholder, // user entered text
+            int x, int y, // spawn position
+            int width, int height, // text input size
+            bool isPassword = false, // is password, turns every symbol into "*" if true
+            bool isMultiline = false, // is multiline, drops down when enough text is entered
+            int fontSize = 14 // sets the font size
             );
 
         void messageBox(
-            const std::string& message, 
-            const std::string& title
+            const std::string& message, // messsage to display
+            const std::string& title // window title
             );
     }
 
-    /**
-     * @brief Runs the main message loop
-     * @details Processes Windows messages and keeps the application running
-     */
-    void run();
+    void run(); // runs the message loop
 }
 
-/**
- * @brief Converts a standard string to a wide string
- * @param str The string to convert
- * @return The converted wide string
- */
-std::wstring toWideString(const std::string& str); 
+std::wstring toWideString(const std::string& str); // converts strings to wide strings, which are expected by win32
