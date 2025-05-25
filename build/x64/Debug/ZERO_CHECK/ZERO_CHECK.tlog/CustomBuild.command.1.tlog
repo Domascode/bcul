@@ -1,0 +1,10 @@
+^C:\USERS\DOMAS SE\DOCUMENTS\C++ PROJECTS\BCUL\BCUL\BUILD\CMAKEFILES\0CB93348971B5407F9C41E68194E3EDC\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" "-SC:/Users/Domas Se/Documents/C++ Projects/bcul/bcul" "-BC:/Users/Domas Se/Documents/C++ Projects/bcul/bcul/build" --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file "C:/Users/Domas Se/Documents/C++ Projects/bcul/bcul/build/bcul.sln"
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
