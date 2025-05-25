@@ -1,7 +1,5 @@
-This and the other documentation files are 100% hand written so I'd appreaciate you reading them)  
-  
 # BCUL  
-BCUL (Basic C++ Utilities (misleading I know)) is a project of mine designed to make doing repetitive C++ tasks as "Pythonic" (easy, one-line) as possible. It's build using C++, raw Win32 (the combo of pain) and CMake. As of now, it really only has 1 purpose: creating native Windows applications as easily as possible, but I'm planning to expand it into further aspects in the near or so future.  
+BCUL (Basic C++ Utilities (misleading I know)) is a project of mine designed to make doing repetitive C++ tasks as "Pythonic" (easy, one-line) as possible. It's built using C++, raw Win32 (the combo of pain) and CMake. As of now, it really only has 1 purpose: creating native Windows applications as easily as possible, but I'm planning to expand it into further aspects in the near or so future.  
 
 # Usage
 1. Clone the git by entering this command in your terminal: git clone github.com/Domascode/bcul  
